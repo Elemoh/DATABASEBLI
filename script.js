@@ -29,10 +29,6 @@ document.getElementById('subscriberForm').addEventListener('submit', function(ev
                 submitSubscriber(newSubscriber);
             }
         })
-        .catch(error => {
-            console.error('Error checking registration:', error);
-            document.getElementById('message').innerText = 'Error checking registration.';
-        });
 });
 
 async function checkIfRegistered(fullName) {
