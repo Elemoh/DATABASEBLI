@@ -29,10 +29,14 @@ document.getElementById('subscriberForm').addEventListener('submit', function(ev
                 submitSubscriber(newSubscriber);
             }
         })
+        .catch(error => {
+            console.error('Error checking registration:', error);
+            document.getElementById('message').innerText = 'Error checking registration.';
+        });
 });
 
 async function checkIfRegistered(fullName) {
-    const response = await fetch('https://67277949270bd0b975529549.mockapi.io/databaseblizz');
+    const response = await fetch('https://6701fb99b52042b542d8eb58.mockapi.io/Subscribers');
     const subscribers = await response.json();
     
     // Check if the fullName exists in the subscribers
@@ -40,7 +44,7 @@ async function checkIfRegistered(fullName) {
 }
 
 function submitSubscriber(subscriber) {
-    fetch('https://67277949270bd0b975529549.mockapi.io/databaseblizz', {
+    fetch('https://6701fb99b52042b542d8eb58.mockapi.io/Subscribers', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
