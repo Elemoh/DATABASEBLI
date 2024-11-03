@@ -5,8 +5,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const password = document.getElementById('password').value;
 
     // Fixed credentials
-    const validUsername = "examkingeot";
-    const validPassword = "Elemoh090227";
+    const validUsername = "Blizz";
+    const validPassword = "Manny";
 
     if (username === validUsername && password === validPassword) {
         // Store a flag in localStorage to indicate the user is logged in
