@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('viewSubscribers').addEventListener('click', function() {
-        fetch('https://6701fb99b52042b542d8eb58.mockapi.io/Subscribers')
+        fetch('https://67277949270bd0b975529549.mockapi.io/database')
             .then(response => response.json())
             .then(subscribers => {
                 const subscribersList = document.getElementById('subscribersList');
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function editSubscriber(id) {
-    fetch(`https://6701fb99b52042b542d8eb58.mockapi.io/Subscribers/${id}`)
+    fetch(`https://67277949270bd0b975529549.mockapi.io/database/${id}`)
         .then(response => response.json())
         .then(subscriber => {
             const fullName = prompt("Edit Full Name:", subscriber.fullName);
@@ -82,7 +82,7 @@ function editSubscriber(id) {
                 score: score || subscriber.score
             };
 
-            fetch(`https://6701fb99b52042b542d8eb58.mockapi.io/Subscribers/${id}`, {
+            fetch(`https://67277949270bd0b975529549.mockapi.io/database/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ function editSubscriber(id) {
 
 function deleteSubscriber(id) {
     if (confirm("Are you sure you want to delete this subscriber?")) {
-        fetch(`https://6701fb99b52042b542d8eb58.mockapi.io/Subscribers/${id}`, {
+        fetch(`https://67277949270bd0b975529549.mockapi.io/database/${id}`, {
             method: 'DELETE'
         })
         .then(() => {
