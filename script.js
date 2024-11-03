@@ -36,7 +36,7 @@ document.getElementById('subscriberForm').addEventListener('submit', function(ev
 });
 
 async function checkIfRegistered(fullName) {
-    const response = await fetch('https://6701fb99b52042b542d8eb58.mockapi.io/Subscribers');
+    const response = await fetch('https://67277949270bd0b975529549.mockapi.io/database');
     const subscribers = await response.json();
     
     // Check if the fullName exists in the subscribers
@@ -44,7 +44,7 @@ async function checkIfRegistered(fullName) {
 }
 
 function submitSubscriber(subscriber) {
-    fetch('https://6701fb99b52042b542d8eb58.mockapi.io/Subscribers', {
+    fetch('https://67277949270bd0b975529549.mockapi.io/database', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
