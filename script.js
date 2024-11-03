@@ -19,12 +19,37 @@ document.getElementById('subscriberForm').addEventListener('submit', function(ev
         score
     };
 
+    // Check if the subscriber is already registered
+    checkIfRegistered(fullName)
+        .then(isRegistered => {
+            if (isRegistered) {
+                document.getElementById('message').innerText = 'You are already registered.';
+            } else {
+                // Submit the new subscriber data
+                submitSubscriber(newSubscriber);
+            }
+        })
+        .catch(error => {
+            console.error('Error checking registration:', error);
+            document.getElementById('message').innerText = 'Error checking registration.';
+        });
+});
+
+async function checkIfRegistered(fullName) {
+    const response = await fetch('https://67277949270bd0b975529549.mockapi.io/databaseblizz');
+    const subscribers = await response.json();
+    
+    // Check if the fullName exists in the subscribers
+    return subscribers.some(subscriber => subscriber.fullName.toLowerCase() === fullName.toLowerCase());
+}
+
+function submitSubscriber(subscriber) {
     fetch('https://67277949270bd0b975529549.mockapi.io/databaseblizz', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(newSubscriber)
+        body: JSON.stringify(subscriber)
     })
     .then(response => response.json())
     .then(() => {
@@ -35,4 +60,4 @@ document.getElementById('subscriberForm').addEventListener('submit', function(ev
         console.error('Error submitting form:', error);
         document.getElementById('message').innerText = 'Error submitting form.';
     });
-});
+}
